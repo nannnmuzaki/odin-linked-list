@@ -1,17 +1,16 @@
 // import "../css/style.css";
-import { ListNode } from "./linked-list/ListNode.js";
 import { LinkedList } from "./linked-list/LinkedList.js";
 
 const list = new LinkedList();
 
 list.append("first");
+list.append();
 list.append(NaN);
 list.prepend("no im first lol");
+console.log(list.size, "list size");
+console.log([list.pop(), "popped"]);
 
-const list2 = new LinkedList();
-
-list2.append("hehe");
-list2.append();
-
-console.log(list);
-console.log(list2);
+console.log(list.size, "list size");
+console.log(list.head, "list head");
+console.log(list.tail, "list tail");
+console.log(list, "linked list");

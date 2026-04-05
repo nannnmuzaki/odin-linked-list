@@ -1,41 +1,75 @@
 import { ListNode } from "./ListNode.js";
 
 export class LinkedList {
-  #root = null;
+  #headNode = null;
+  #tailNode = null;
+  #listSize = 0;
 
   constructor() {}
 
-  get root() {
-    return this.#root;
+  get head() {
+    return this.#headNode;
   }
 
-  set root(node) {
-    if (!(node instanceof ListNode)) {
+  set #head(node) {
+    if (!(node instanceof ListNode) && node !== null) {
       throw new Error("Linked List must only contain List of Node");
     }
-    this.#root = node;
+    this.#headNode = node;
+  }
+
+  get tail() {
+    return this.#tailNode;
+  }
+
+  set #tail(node) {
+    if (!(node instanceof ListNode) && node !== null) {
+      throw new Error("Linked List must only contain List of Node");
+    }
+    this.#tailNode = node;
+  }
+
+  get size() {
+    return this.#listSize;
   }
 
   append(value) {
-    if (!this.#root) {
-      this.root = new ListNode(value);
+    if (!this.#headNode) {
+      const node = new ListNode(value);
+      this.#head = node;
+      this.#tail = node;
     } else {
       const node = new ListNode(value);
-      let current = this.#root;
+      let current = this.#headNode;
       while (current.nextNode !== null) {
         current = current.nextNode;
       }
       current.nextNode = node;
+      this.#tail = node;
     }
+    this.#listSize++;
   }
 
   prepend(value) {
-    if (!this.#root) {
-      this.root = new ListNode(value);
+    if (!this.#headNode) {
+      const node = new ListNode(value);
+      this.#head = node;
+      this.#tail = node;
     } else {
       const node = new ListNode(value);
-      node.nextNode = this.#root;
-      this.#root = node;
+      node.nextNode = this.#headNode;
+      this.#head = node;
+      this.#listSize++;
     }
+  }
+
+  pop() {
+    if (this.#listSize <= 0) {
+      return undefined;
+    }
+    const head = this.#headNode;
+    this.#headNode = head.nextNode;
+    this.#listSize--;
+    return head.value;
   }
 }
