@@ -14,3 +14,5 @@ console.log(list.size, "list size");
 console.log(list.head, "list head");
 console.log(list.tail, "list tail");
 console.log(list, "linked list");
+
+console.log(list.at(0), "value index");

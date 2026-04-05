@@ -72,4 +72,24 @@ export class LinkedList {
 
     return head.value;
   }
+
+  at(index) {
+    if (index < 0) return undefined;
+    if (index >= this.#listSize) return undefined;
+    if (index === this.#listSize - 1) return this.#tailNode.value;
+
+    let start = this.#headNode;
+    let i = 0;
+    while (i !== index) {
+      console.log(start.value, i);
+      start = start.nextNode;
+      i++;
+    }
+    return start.value;
+  }
+
+  // contains(value) {
+  //     if (value === undefined) return false;
+
+  // }
 }
