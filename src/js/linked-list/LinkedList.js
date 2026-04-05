@@ -82,7 +82,6 @@ export class LinkedList {
     let start = this.#headNode;
     let i = 0;
     while (i !== index) {
-      console.log(start.value, i);
       start = start.nextNode;
       i++;
     }
@@ -117,5 +116,74 @@ export class LinkedList {
       index++;
     }
     return -1;
+  }
+
+  toString() {
+    if (this.#listSize <= 0) return "";
+    let current = this.#headNode;
+    let string = "";
+    while (current !== null) {
+      string += `( ${current.value} ) -> `;
+      current = current.nextNode;
+    }
+
+    return string + "null";
+  }
+
+  insertAt(index, ...values) {
+    if (index < 0) throw new RangeError("Valid index starts from 0");
+    if (index > this.#listSize) throw new RangeError("Index is out of bound");
+    if (index === 0) {
+      if (values.length === 1) {
+        this.prepend(values[0]);
+        return values[0];
+      } else {
+        let i = values.length - 1;
+        while (i >= 0) {
+          this.prepend(values[i]);
+          i--;
+        }
+        return values;
+      }
+    }
+
+    if (index === this.#listSize) {
+      if (values.length === 1) {
+        this.append(values[0]);
+        return values[0];
+      } else {
+        let i = 0;
+        while (i < values.length) {
+          this.append(values[i]);
+          i++;
+        }
+        return values;
+      }
+    }
+
+    let current = this.#headNode;
+    let i = 0;
+    while (i !== index - 1) {
+      current = current.nextNode;
+      i++;
+    }
+
+    let j = 0;
+    let temp = current.nextNode;
+    while (j < values.length) {
+      const node = new ListNode(values[j]);
+      if (j === values.length - 1) {
+        current.nextNode = node;
+        current = node;
+        current.nextNode = temp;
+        this.#listSize++;
+      } else {
+        current.nextNode = node;
+        current = node;
+        this.#listSize++;
+      }
+      j++;
+    }
+    return values;
   }
 }
