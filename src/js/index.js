@@ -8,7 +8,7 @@ list.append();
 list.append(NaN);
 list.prepend("no im first lol");
 console.log(list.size, "list size");
-console.log([list.pop(), "popped"]);
+// console.log([list.pop(), "popped"]);
 
 console.log(list.size, "list size");
 console.log(list.head, "list head");
@@ -18,3 +18,6 @@ console.log(list, "linked list");
 console.log(list.at(0), "value index");
 console.log(list.contains("holla"), "contains value");
 console.log(list.contains(null), "contains value");
+
+console.log(list.findIndex("holla"), "index value");
+console.log(list.findIndex(NaN), "index value");

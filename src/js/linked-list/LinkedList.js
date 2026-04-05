@@ -91,15 +91,31 @@ export class LinkedList {
 
   contains(value) {
     if (this.#listSize <= 0) return undefined;
-    if (value === undefined) return false;
-    if (this.#headNode === value) return true;
-    if (this.#tailNode === value) return true;
+    if (Object.is(undefined, value)) return false;
+    if (Object.is(this.#headNode.value, value)) return true;
+    if (Object.is(this.#tailNode.value, value)) return true;
 
     let current = this.#headNode.nextNode;
     while (current.nextNode !== null) {
-      if (current.value === value) return true;
+      if (Object.is(current.value, value)) return true;
       current = current.nextNode;
     }
     return false;
+  }
+
+  findIndex(value) {
+    if (this.#listSize <= 0) return -1;
+    if (Object.is(undefined, value)) return -1;
+    if (Object.is(this.#headNode.value, value)) return 0;
+    if (Object.is(this.#tailNode.value, value)) return this.#listSize - 1;
+
+    let current = this.#headNode.nextNode;
+    let index = 1;
+    while (current.nextNode !== null) {
+      if (Object.is(current.value, value)) return index;
+      current = current.nextNode;
+      index++;
+    }
+    return -1;
   }
 }
