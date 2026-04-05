@@ -40,11 +40,7 @@ export class LinkedList {
       this.#tail = node;
     } else {
       const node = new ListNode(value);
-      let current = this.#headNode;
-      while (current.nextNode !== null) {
-        current = current.nextNode;
-      }
-      current.nextNode = node;
+      this.#tailNode.nextNode = node;
       this.#tail = node;
     }
     this.#listSize++;
@@ -59,17 +55,21 @@ export class LinkedList {
       const node = new ListNode(value);
       node.nextNode = this.#headNode;
       this.#head = node;
-      this.#listSize++;
     }
+    this.#listSize++;
   }
 
   pop() {
-    if (this.#listSize <= 0) {
-      return undefined;
-    }
+    if (this.#listSize <= 0) return undefined;
+
     const head = this.#headNode;
     this.#headNode = head.nextNode;
     this.#listSize--;
+
+    if (this.#listSize === 0) {
+      this.#tailNode = null;
+    }
+
     return head.value;
   }
 }
