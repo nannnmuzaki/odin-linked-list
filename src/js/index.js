@@ -16,3 +16,5 @@ console.log(list.tail, "list tail");
 console.log(list, "linked list");
 
 console.log(list.at(0), "value index");
+console.log(list.contains("holla"), "contains value");
+console.log(list.contains(null), "contains value");

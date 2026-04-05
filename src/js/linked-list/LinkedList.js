@@ -74,6 +74,7 @@ export class LinkedList {
   }
 
   at(index) {
+    if (this.#listSize <= 0) return undefined;
     if (index < 0) return undefined;
     if (index >= this.#listSize) return undefined;
     if (index === this.#listSize - 1) return this.#tailNode.value;
@@ -88,8 +89,17 @@ export class LinkedList {
     return start.value;
   }
 
-  // contains(value) {
-  //     if (value === undefined) return false;
+  contains(value) {
+    if (this.#listSize <= 0) return undefined;
+    if (value === undefined) return false;
+    if (this.#headNode === value) return true;
+    if (this.#tailNode === value) return true;
 
-  // }
+    let current = this.#headNode.nextNode;
+    while (current.nextNode !== null) {
+      if (current.value === value) return true;
+      current = current.nextNode;
+    }
+    return false;
+  }
 }
