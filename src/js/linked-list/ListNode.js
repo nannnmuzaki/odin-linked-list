@@ -3,15 +3,14 @@ export class ListNode {
   #nextNode = null;
 
   constructor(value) {
-    this.#value = value;
-    this.#nextNode = null;
+    this.value = value;
   }
 
   get value() {
     return this.#value;
   }
 
-  set value(data) {
+  set value(data = null) {
     this.#value = data;
   }
 
@@ -20,7 +19,7 @@ export class ListNode {
   }
 
   set nextNode(node) {
-    if (!(node instanceof ListNode)) {
+    if (!(node instanceof ListNode) && node !== null) {
       throw new Error("Next Node must be a type of ListNode");
     }
     this.#nextNode = node;
