@@ -20,8 +20,9 @@ export class ListNode {
   }
 
   set nextNode(node) {
-    if ((!node) instanceof ListNode) {
+    if (!(node instanceof ListNode)) {
       throw new Error("Next Node must be a type of ListNode");
     }
+    this.#nextNode = node;
   }
 }
