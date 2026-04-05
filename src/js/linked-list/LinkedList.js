@@ -133,6 +133,7 @@ export class LinkedList {
   insertAt(index, ...values) {
     if (index < 0) throw new RangeError("Valid index starts from 0");
     if (index > this.#listSize) throw new RangeError("Index is out of bound");
+
     if (index === 0) {
       if (values.length === 1) {
         this.prepend(values[0]);
@@ -185,5 +186,37 @@ export class LinkedList {
       j++;
     }
     return values;
+  }
+
+  removeAt(index) {
+    if (index < 0) throw new RangeError("Valid index starts from 0");
+    if (index >= this.#listSize) throw new RangeError("Index is out of bound");
+
+    if (index === 0) {
+      return this.pop();
+    }
+    if (index === this.#listSize - 1) {
+      let current = this.#headNode;
+      while (current.nextNode.nextNode !== null) {
+        current = current.nextNode;
+      }
+      const temp = current.nextNode;
+      current.nextNode = null;
+      this.#tail = current;
+      this.#listSize--;
+      return temp.value;
+    }
+    if (index >= 0 && index < this.#listSize - 1) {
+      let i = 0;
+      let current = this.#headNode;
+      while (i !== index - 1) {
+        current = current.nextNode;
+        i++;
+      }
+      const temp = current.nextNode;
+      current.nextNode = current.nextNode.nextNode;
+      this.#listSize--;
+      return temp.value;
+    }
   }
 }

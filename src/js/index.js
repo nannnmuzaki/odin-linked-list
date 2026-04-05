@@ -12,24 +12,18 @@ console.log(list.toString());
 list.insertAt(2, 11, 15, 23);
 console.log(list.toString());
 list.insertAt(0, 0, 2);
+list.insertAt(list.size, 2, 17);
+console.log(list.toString());
+list.removeAt(2);
+list.removeAt(0);
+list.removeAt(list.size - 1);
 console.log(list.toString());
 
-// list.append("first");
-// list.append();
-// list.append(NaN);
-// list.prepend("no im first lol");
-// console.log(list.size, "list size");
-// // console.log([list.pop(), "popped"]);
+console.log(list.pop());
 
-// console.log(list.size, "list size");
-// console.log(list.head, "list head");
-// console.log(list.tail, "list tail");
-// console.log(list, "linked list");
+console.log(list.head, list.tail, list.size);
 
-// console.log(list.at(0), "value index");
-// console.log(list.contains("holla"), "contains value");
-// console.log(list.contains(null), "contains value");
-
-// console.log(list.findIndex("holla"), "index value");
-// console.log(list.findIndex(NaN), "index value");
-// console.log(list.toString());
+console.log(list.at(4));
+console.log(list.findIndex(23));
+console.log(list.contains(11));
+console.log(list.toString());
