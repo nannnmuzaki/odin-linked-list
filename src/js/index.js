@@ -1,29 +1,32 @@
-// import "../css/style.css";
+import "../css/style.css";
 import { LinkedList } from "./linked-list/LinkedList.js";
 
-const list = new LinkedList();
+// Expose functions to the global window object for playing with it in console or console debugging
+window.LinkedList = LinkedList;
 
-list.append(1);
-list.append(5);
-list.append(7);
-console.log(list.toString());
-list.insertAt(1, 3);
-console.log(list.toString());
-list.insertAt(2, 11, 15, 23);
-console.log(list.toString());
-list.insertAt(0, 0, 2);
-list.insertAt(list.size, 2, 17);
-console.log(list.toString());
-list.removeAt(2);
-list.removeAt(0);
-list.removeAt(list.size - 1);
-console.log(list.toString());
+const listtt = new LinkedList();
 
-console.log(list.pop());
+listtt.append(1);
+listtt.append(5);
+listtt.append(7);
+console.log(listtt.toString());
+listtt.insertAt(1, 3);
+console.log(listtt.toString());
+listtt.insertAt(2, 11, 15, 23);
+console.log(listtt.toString());
+listtt.insertAt(0, 0, 2);
+listtt.insertAt(listtt.size, 2, 17);
+console.log(listtt.toString());
+listtt.removeAt(2);
+listtt.removeAt(0);
+listtt.removeAt(listtt.size - 1);
+console.log(listtt.toString());
 
-console.log(list.head, list.tail, list.size);
+console.log(listtt.pop());
 
-console.log(list.at(4));
-console.log(list.findIndex(23));
-console.log(list.contains(11));
-console.log(list.toString());
+console.log(listtt.head, listtt.tail, listtt.size);
+
+console.log(listtt.at(4));
+console.log(listtt.findIndex(23));
+console.log(listtt.contains(11));
+console.log(listtt.toString());
