@@ -95,7 +95,7 @@ export class LinkedList {
     if (Object.is(this.#tailNode.value, value)) return true;
 
     let current = this.#headNode.nextNode;
-    while (current.nextNode !== null) {
+    while (current !== null) {
       if (Object.is(current.value, value)) return true;
       current = current.nextNode;
     }
@@ -110,7 +110,7 @@ export class LinkedList {
 
     let current = this.#headNode.nextNode;
     let index = 1;
-    while (current.nextNode !== null) {
+    while (current !== null) {
       if (Object.is(current.value, value)) return index;
       current = current.nextNode;
       index++;
